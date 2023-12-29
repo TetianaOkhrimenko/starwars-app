@@ -10,9 +10,10 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/people", element: <Card /> },
-      { path: "/planets", element: <Card /> },
-      { path: "/starships", element: <Card /> },
+      { path: "/", element: <Card entityType="people" /> },
+      { path: "/people", element: <Card entityType="people" /> },
+      { path: "/planets", element: <Card entityType="planets" /> },
+      { path: "/starships", element: <Card entityType="starships" /> },
     ],
   },
 ]);
