@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./Card.css";
 import { getData } from "../../services/getData";
+import Button from "../Button/Button";
+import { Oval } from "react-loader-spinner";
 
 export default function Card({ entityType }) {
   const [data, setData] = useState({});
@@ -11,6 +13,10 @@ export default function Card({ entityType }) {
     }/${index}.jpg`
   );
   const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setIndex(1);
+  }, [entityType]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +36,19 @@ export default function Card({ entityType }) {
     fetchData();
   }, [index, entityType]);
 
+  useEffect(() => {
+    setImageURL(
+      `https://starwars-visualguide.com/assets/img/${
+        entityType === "people" ? "characters" : entityType
+      }/${index}.jpg`
+    );
+    setLoading(true);
+  }, [index, entityType]);
+
+  const clickNextButton = () => {
+    setIndex((prev) => prev + 1);
+  };
+
   const handleError = () => {
     setImageURL(
       "https://starwars-visualguide.com/assets/img/big-placeholder.jpg"
@@ -38,9 +57,20 @@ export default function Card({ entityType }) {
 
   return (
     <div className="Card">
+      <div className="button-container">
+        <Button handleClick={clickNextButton}>Next</Button>
+      </div>
       <div className="container">
         {loading ? (
-          <p>Loading...</p>
+          <Oval
+            visible={true}
+            height="80"
+            width="80"
+            color="#f1f1f1"
+            secondaryColor="#B38FF9"
+            ariaLabel="oval-loading"
+            wrapperClass=""
+          />
         ) : (
           <>
             <img
@@ -65,16 +95,28 @@ export default function Card({ entityType }) {
             )}
             {entityType === "planets" && (
               <ul>
-                <li>Population: {data.population}</li>
-                <li>Orbital period: {data.orbital_period}</li>
-                <li>Diameter: {data.diameter}</li>
+                <li>
+                  <span>Population:</span> {data.population}
+                </li>
+                <li>
+                  <span>Orbital period:</span> {data.orbital_period}
+                </li>
+                <li>
+                  <span>Diameter:</span> {data.diameter}
+                </li>
               </ul>
             )}
             {entityType === "starships" && (
               <ul>
-                <li>Model: {data.model}</li>
-                <li>Manufacturer: {data.manufacturer}</li>
-                <li>Cost in credits: {data.cost_in_credits}</li>
+                <li>
+                  <span>Model:</span> {data.model}
+                </li>
+                <li>
+                  <span>Manufacturer:</span> {data.manufacturer}
+                </li>
+                <li>
+                  <span>Cost in credits:</span> {data.cost_in_credits}
+                </li>
               </ul>
             )}
           </>

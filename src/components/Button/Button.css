@@ -1,0 +1,23 @@
+.Button {
+  outline: none;
+  font-family: "Tinos", serif;
+  font-size: 20px;
+  width: 160px;
+  margin: 0 auto 40px;
+  display: block;
+  border: none;
+  border-radius: 5px;
+  background-image: linear-gradient(
+    135deg,
+    rgb(206, 159, 252) 10%,
+    rgb(115, 103, 240) 100%
+  );
+  padding: 10px 25px;
+  transition: all 400ms ease-in-out;
+  color: #f1f1f1;
+  cursor: pointer;
+}
+
+.Button:hover {
+  box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
+}

@@ -7,35 +7,14 @@
   border-radius: 5px;
   box-shadow: rgba(234, 233, 240, 0.321) 0px 7px 29px 0px;
   background-color: #22213d;
+  height: 800px;
 }
-
-/*.Card button {
-  outline: none;
-  width: 160px;
-  margin: 0 auto 20px;
-  display: block;
-  border: none;
-  border-radius: 5px;
-  background-image: linear-gradient(
-    135deg,
-    rgb(206, 159, 252) 10%,
-    rgb(115, 103, 240) 100%
-  );
-  padding: 10px 25px;
-  font-size: 18px;
-  transition: all 400ms ease-in-out;
-  color: #f1f1f1;
-  cursor: pointer;
-}
-
-.Card button:hover {
-  box-shadow: 0 4px 15px 0 rgba(116, 79, 168, 0.75);
-}*/
 
 .Card img {
   max-width: 300px;
   border-radius: 10px;
   margin-bottom: 20px;
+  box-shadow: rgba(234, 233, 240, 0.321) 0px 7px 29px 0px;
 }
 
 .Card h3 {
