@@ -1,4 +1,4 @@
-Simple App using react, axios, react-route-dom and swapi.dev API.
+### Simple Starwars App using react, axios, react-route-dom and swapi.dev API.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
