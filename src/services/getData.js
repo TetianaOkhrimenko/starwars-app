@@ -9,27 +9,40 @@ export async function getData(id, entity) {
     if (entity === "people") {
       return {
         name: data.name,
-        gender: data.gender,
-        birth_year: data.birth_year,
-        eye_color: data.eye_color,
+        Height: data.height,
+        Mass: data.mass,
+        Gender: data.gender,
+        "Birth year": data.birth_year,
+        "Eye color": data.eye_color,
+        "Skin color": data.skin_color,
+        "Hair color": data.hair_color,
       };
     }
 
     if (entity === "planets") {
       return {
         name: data.name,
-        population: data.population,
-        orbital_period: data.orbital_period,
-        diameter: data.diameter,
+        "Rotation period": data.rotation_period,
+        "Orbital period": data.orbital_period,
+        Diameter: data.diameter,
+        Climate: data.climate,
+        Gravity: data.gravity,
+        Terrain: data.terrain,
+        Population: data.population,
       };
     }
 
     if (entity === "starships") {
       return {
         name: data.name,
-        model: data.model,
-        manufacturer: data.manufacturer,
-        cost_in_credits: data.cost_in_credits,
+        Model: data.model,
+        Manufacturer: data.manufacturer,
+        "Cost in credits": data.cost_in_credits,
+        Length: data.length,
+        "Max atmosphering speed": data.max_atmosphering_speed,
+        Crew: data.crew,
+        Passengers: data.passengers,
+        "Cargo capacity": data.cargo_capacity,
       };
     }
   } catch (error) {

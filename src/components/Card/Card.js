@@ -23,6 +23,7 @@ export default function Card({ entityType }) {
       try {
         const result = await getData(index, entityType);
         setData(result);
+        console.log(Object.entries(result));
         setLoading(false);
       } catch (error) {
         console.log(error);
@@ -60,68 +61,39 @@ export default function Card({ entityType }) {
       <div className="button-container">
         <Button handleClick={clickNextButton}>Next</Button>
       </div>
-      <div className="container">
-        {loading ? (
-          <Oval
-            visible={true}
-            height="80"
-            width="80"
-            color="#f1f1f1"
-            secondaryColor="#B38FF9"
-            ariaLabel="oval-loading"
-            wrapperClass=""
+
+      {loading ? (
+        <Oval
+          visible={true}
+          height="80"
+          width="80"
+          color="#f1f1f1"
+          secondaryColor="#B38FF9"
+          ariaLabel="oval-loading"
+          wrapperClass="loader"
+        />
+      ) : (
+        <div className="data-wrapper">
+          <img
+            src={imageURL}
+            alt={`Star Wars ${entityType} ${data.name}` || "Unknown"}
+            onError={handleError}
           />
-        ) : (
-          <>
-            <img
-              src={imageURL}
-              alt={`Star Wars ${entityType} ${data.name}` || "Unknown"}
-              onError={handleError}
-            />
+          <div>
             <h3> {data.name}</h3>
-            {entityType === "people" && (
-              <ul>
-                <li>
-                  <span>Gender:</span> {data.gender}
-                </li>
-                <li>
-                  <span>Birth Year:</span> {data.birth_year}
-                </li>
-                <li>
-                  <span>Eye color: </span>
-                  {data.eye_color}
-                </li>
-              </ul>
-            )}
-            {entityType === "planets" && (
-              <ul>
-                <li>
-                  <span>Population:</span> {data.population}
-                </li>
-                <li>
-                  <span>Orbital period:</span> {data.orbital_period}
-                </li>
-                <li>
-                  <span>Diameter:</span> {data.diameter}
-                </li>
-              </ul>
-            )}
-            {entityType === "starships" && (
-              <ul>
-                <li>
-                  <span>Model:</span> {data.model}
-                </li>
-                <li>
-                  <span>Manufacturer:</span> {data.manufacturer}
-                </li>
-                <li>
-                  <span>Cost in credits:</span> {data.cost_in_credits}
-                </li>
-              </ul>
-            )}
-          </>
-        )}
-      </div>
+            <ul>
+              {Object.entries(data)
+                .slice(1)
+                .map((item) => (
+                  <li>
+                    <span>{item[0]}: </span>
+                    {item[1]}
+                  </li>
+                ))}
+            </ul>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
